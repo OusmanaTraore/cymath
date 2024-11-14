@@ -9,7 +9,6 @@ import {AlertController} from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-// export class LoginPage implements OnInit {
   username!: string;
   password!: string;
 
