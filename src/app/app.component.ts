@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import {AuthService} from './services/auth.service'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {}
+
+  login(){
+    const role = this.authService.getRole();
+    if (role === 'admin'){
+      this.router.navigate(['/home-admin']);
+    }else if (role === 'professeur'){
+      this.router.navigate(['/home-professeur']);
+    }else if (role === 'eleve'){
+      this.router.navigate(['/home-eleve']);
+    }
+  }
 }

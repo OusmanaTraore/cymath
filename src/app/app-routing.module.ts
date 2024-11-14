@@ -2,10 +2,36 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  // },
+  {
+    path: 'home-admin',
+    loadChildren: () =>
+      import('./home-admin/home-admin.module').then(
+        (m) => m.HomeAdminPageModule
+      ),
+  },
+  {
+    path: 'home-eleve',
+    loadChildren: () =>
+      import('./home-eleve/home-eleve.module').then(
+        (m) => m.HomeElevePageModule
+      ),
+  },
+  {
+    path: 'home-professeur',
+    loadChildren: () =>
+      import('./home-professeur/home-professeur.module').then(
+        (m) => m.HomeProfesseurPageModule
+      ),
+  },
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  }
+    redirectTo: '/home-admin',
+    pathMatch: 'full',
+  },
 ];
 @NgModule({
   imports: [
